@@ -1,9 +1,13 @@
 import "../assets/css/form.css";
+import { useState } from "react";
 
 // import des composants
 import Input from "./Input";
 
-const Form = ({ email, password, setEmail, setPassword }) => {
+const Form = () => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
 	const handleSubmit = () => {
 		let char = `${email.indexOf("@")}`;
 		let result = `${email.substring(0, char)}`;
