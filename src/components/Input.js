@@ -1,28 +1,23 @@
 
-{/* <label htmlFor="userPassword">Password :
-<input
-    type="password"
-    id="userPassword"
-    placeholder="Password"
-    autoComplete='off'
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-/></label> */}
 
+const Input = ({ name, state, setState, email, password }) => {
 
-
-const Input = () => {
     return (
- 
-        <label htmlFor="userName">Name :
-            {/* <input
-                               type={password ? "password" : email ? "email" : "text"}
-                placeholder="Name"
-                id="userName"
-                value=
-                // onChange={onChange}
-            /> */}
-            </label>
+        <label htmlFor={name}>{name}
+            <input
+                setState={setState}
+                type={password ? "password" : email ? "email" : "text"}
+                placeholder={name}
+                id={name}
+                value={state}
+                autoComplete={password ? 'off' : 'on'}
+                onChange={(event) => {
+                    console.log(event.target.value);
+                    setState(event.target.value);
+
+                }}
+            />
+        </label>
     )
 }
 export default Input;

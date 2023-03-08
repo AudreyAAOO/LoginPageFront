@@ -3,7 +3,7 @@ import "../assets/css/header_footer.css";
 const Header = () => {
 	return (
 		<header className="header">
-			<h1>Signup</h1>
+			<h1>HEADER</h1>
 		</header>
 	);
 };
