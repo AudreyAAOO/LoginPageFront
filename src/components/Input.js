@@ -11,7 +11,7 @@ const Input = ({ name, state, setState, email, password }) => {
                 id={name}
                 value={state}
                 autoComplete={password ? 'off' : 'on'}
-                minlength={password && "8"}
+                minLength={password && "8"}
                 onChange={(event) => {
                     setState(event.target.value);
                 }}
