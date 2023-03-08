@@ -5,16 +5,15 @@ const Input = ({ name, state, setState, email, password }) => {
     return (
         <label htmlFor={name}>{name}
             <input
-                setState={setState}
+                required
                 type={password ? "password" : email ? "email" : "text"}
                 placeholder={name}
                 id={name}
                 value={state}
                 autoComplete={password ? 'off' : 'on'}
+                minlength={password && "8"}
                 onChange={(event) => {
-                    console.log(event.target.value);
                     setState(event.target.value);
-
                 }}
             />
         </label>
