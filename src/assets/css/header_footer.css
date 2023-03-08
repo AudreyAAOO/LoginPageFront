@@ -1,0 +1,56 @@
+.App_header {
+	background-color: #170036;
+	border-bottom: #b3b3b3 1px solid;
+	height: 100px;
+	padding: 10px;
+	font-weight: 700;
+	line-height: 20px;
+	text-align: center;
+	color: #ffffff;
+}
+
+.App_header > span {
+	/* écarter les icones */
+	margin: 0 10px;
+}
+
+h1 {
+	font-size: 30px;
+}
+h2 {
+	font-size: 20px;
+}
+h3 {
+	font-size: 15px;
+}
+
+/***** FOOTER ******/
+
+.footer {
+	background-color: #170036;
+	height: 95px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	line-height: 20px;
+	font-size: 16px;
+	color: #fff;
+	/* position: relative; */
+}
+
+footer > span {
+	padding: 15px 3px;
+	background: rgba(146, 146, 146, 0.12);
+	backdrop-filter: grayscale(-10) contrast(4) blur(3px);
+}
+
+footer span > a {
+	color: #fff;
+}
+
+footer span > a:hover {
+	color: rgba(194, 70, 251, 0.791);
+	text-shadow: 0 -1px 2px #5000fc, 0 -2px 2px rgb(30, 0, 253),
+		0 -3px 5px #00c3ff, 0 -3px 10px rgb(0, 255, 242);
+}
