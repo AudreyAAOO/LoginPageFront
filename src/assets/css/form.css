@@ -1,3 +1,44 @@
 .form {
-	background-color: grey;
+	background-color: rgb(217, 189, 138);
+	border: 1px solid white;
+	width: 40vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.form > h2 {
+	font-size: 30px;
+	padding: 30px;
+	font-weight: 700;
+	line-height: 20px;
+	text-align: center;
+}
+
+label {
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 28px;
+	color: #f0f0f0;
+	display: flex;
+	align-items: flex-start;
+	gap: 15px;
+}
+
+input {
+	background-color: #f0f0f0;
+	border: 1px solid #c4c4c4;
+	border-radius: 4px;
+	display: block; 
+	width: 200px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 26px;
+	color: rgb(23, 3, 101); /* couleur de la police quand on écrit ds l'input*/
+}
+
+input[type="email"] {
+	border: 1px solid #c04747;
 }

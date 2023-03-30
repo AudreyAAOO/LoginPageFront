@@ -1,1 +1,13 @@
+.container_loginPage {
+	background-color: #bcb6c4;
+	width: 100vw;
+	/*! dimension main - hauteur du header(100) - hauteur du footer(95) = affichage correct du footer  */
+	height: calc(100vh - 195px);
+	display: flex;
+    flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+    position: relative;
+}
+
 

@@ -1,27 +1,26 @@
-.App_header {
+* {
+	box-sizing: border-box; /* inclut le padding et margin ds le calcul de la largeur */
+}
+
+.header {
 	background-color: #170036;
-	border-bottom: #b3b3b3 1px solid;
+	border-bottom: #f0b800 5px solid;
 	height: 100px;
-	padding: 10px;
-	font-weight: 700;
-	line-height: 20px;
-	text-align: center;
 	color: #ffffff;
 }
 
-.App_header > span {
-	/* écarter les icones */
-	margin: 0 10px;
+.header > h1,
+h2 {
+	padding: 20px;
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 20px;
+	text-align: center;
 }
 
-h1 {
-	font-size: 30px;
-}
 h2 {
-	font-size: 20px;
-}
-h3 {
-	font-size: 15px;
+	font-size: 25px;
+	padding: 10px;
 }
 
 /***** FOOTER ******/
