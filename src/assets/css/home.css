@@ -1,0 +1,16 @@
+* {
+	box-sizing: border-box; /* inclut le padding et margin ds le calcul de la largeur */
+}
+
+.container_home {
+    background-color: #bcb6c4;
+    width: 100vw;
+    height: calc(100vh - 195px);
+    	/*! dimension main - hauteur du header(100) - hauteur du footer(95) = affichage correct du footer  */
+	height: calc(100vh - 195px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+}
