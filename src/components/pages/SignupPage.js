@@ -54,8 +54,10 @@ const SignupPage = () => {
         validate
     })
 
-    console.log("formValues ", formik.values);
-    console.log("formik.errors ", formik.errors);
+    console.log("formik: ", formik); // remarquons la propriété 'touched' pr savoir le form a été touché ou pas
+    console.log("formik.touched: ", formik.touched);
+    // console.log("formValues: ", formik.values);
+    // console.log("formik.errors: ", formik.errors);
 
     // créer un schéma (=objet) qui va contenir la validation que l'on souhaite obtenir à chaque champ
 
@@ -83,26 +85,63 @@ const SignupPage = () => {
     return (<>
 
         <form onSubmit={formik.handleSubmit} className="form">
+
             <h2>SignupPage</h2>
-            <label htmlFor="name">Name</label>
-            <input type='text' id='name' name="name" onChange={formik.handleChange} value={formik.values.name} />
-            {/*  formik.values attends l'attribut name="" */}
+
+            <label htmlFor="name">Name</label>  {/*  formik.values attends l'attribut name="" */}
+            <input type='text' id='name' name="name"
+                onChange={formik.handleChange}
+                value={formik.values.name}
+                onBlur={formik.handleBlur} // lorsque je quitte l'input, passe 'touched' à True
+            />
+
+            {/* affiche un msg d'erreur si une erreur est détecté ET SI le champ/l'input a été touché*/}
+            {formik.errors.name && formik.touched.name &&
+                <span style={{ color: "red", fontSize: "13px" }}>{formik.errors.name}</span>
+            }
+
             <label htmlFor="email">E-mail</label>
-            <input type='email' id='email' name="email" onChange={formik.handleChange} value={formik.values.email} />
+            <input type='email' id='email' name="email"
+                onChange={formik.handleChange}
+                value={formik.values.email}
+                onBlur={formik.handleBlur}
+            />
+
+            {formik.errors.email && formik.touched.email &&
+                <span style={{ color: "red", fontSize: "13px" }}>{formik.errors.email}</span>
+            }
 
             <label htmlFor="urlgit">GitHub URL</label>
-            <input type='url' id='urlgit' name="giturl" onChange={formik.handleChange} value={formik.values.giturl} placeholder='http://...' />
+            <input type='url' id='urlgit' name="giturl"
+                onChange={formik.handleChange}
+                value={formik.values.giturl}
+                placeholder='http://...'
+                onBlur={formik.handleBlur}
+            />
 
-            <input type='checkbox' id='cgu' name="cgu" onChange={formik.handleChange} checked={formik.values.cgu} />
+            {formik.errors.giturl && formik.touched.giturl &&
+                <span style={{ color: "red", fontSize: "13px" }}>{formik.errors.giturl}</span>
+            }
+
+            <input type='checkbox' id='cgu' name="cgu"
+                onChange={formik.handleChange}
+                checked={formik.values.cgu}
+                onBlur={formik.handleBlur}
+            />
             <label htmlFor="cgu">J'accepte les Conditions Générales d'Utilisation (CGU) </label>
 
+            {formik.errors.cgu && formik.touched.cgu &&
+                <span style={{ color: "red", fontSize: "13px" }}>{formik.errors.cgu}</span>
+            }
+
             <button type="submit">SUBMIT</button>
+
             <br />
         </form>
 
         <br />
         <Link to={'/'}>GO to HOME</Link>
-        
+
     </>)
 }
 
