@@ -1,5 +1,9 @@
+import React from 'react';
 import { Link } from "react-router-dom";
 import "../../assets/css/loginPage.css"
+
+//! voir tutos https://www.youtube.com/watch?v=9T9z_qrrybY&list=PLQRpAiZalzY_MaSrQ6QKiDfs8wsq26JPv&index=7
+
 
 // doc https://formik.org/docs/overview
 // yarn add formik or  npm install formik --save
@@ -10,6 +14,21 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup';
 // yarn add @hookform/resolvers
 // import { yupResolver } from "@hookform/resolvers/yup";
+
+const validationSchema = Yup.object().shape({
+    name: Yup.string()
+        .min(3, 'must be 3+ characters')
+        .max(20, 'must be 20 characters or less')
+        .required('le nom est obligatoire'),
+    email: Yup.string()
+        .email('Email is invalid')
+        .required('l\'email est obligatoire'),
+    giturl: Yup.string()
+        .url()
+        .required('required)'),
+    cgu: Yup.boolean().oneOf([true])
+        .required('veuillez accepter les conditions générales d\'utilisation')
+})
 
 const SignupPage = () => {
 
@@ -23,27 +42,28 @@ const SignupPage = () => {
 
     const handleSubmitForm = (formValues) => { // fonction responsable de la soumission du formulaire, prend en paramètre les valeurs du formulaire
         console.log('handleSubmitForm formValues', formValues);
+
     };
 
+    // si validation aavec Yup, commenter le validate de Formik
+    // const validate = (formValues) => { // fonction qui prend en paramètre les valeurs du formulaire
 
-    const validate = (formValues) => { // fonction qui prend en paramètre les valeurs du formulaire
+    //     const errors = {}
 
-        const errors = {}
-
-        if (formValues.name === "") {
-            errors.name = 'le nom est obligatoire'
-        }
-        if (formValues.email === "") {
-            errors.email = 'l\'email est obligatoire'
-        }
-        if (formValues.giturl === "") {
-            errors.giturl = `l'adresse de votre GitHub est obligatoire`
-        }
-        if (!formValues.cgu) {
-            errors.cgu = 'veuillez accepter les conditions générales d\'utilisation'
-        }
-        return errors;
-    }
+    //     if (formValues.name === "") {
+    //         errors.name = 'le nom est obligatoire'
+    //     }
+    //     if (formValues.email === "") {
+    //         errors.email = 'l\'email est obligatoire'
+    //     }
+    //     if (formValues.giturl === "") {
+    //         errors.giturl = `l'adresse de votre GitHub est obligatoire`
+    //     }
+    //     if (!formValues.cgu) {
+    //         errors.cgu = 'veuillez accepter les conditions générales d\'utilisation'
+    //     }
+    //     return errors;
+    // }
 
     // console.log("formik.errors ", formik.errors);
 
@@ -51,28 +71,19 @@ const SignupPage = () => {
         initialValues,  // useFormik({}) // prend un objet en paramètre, que nous détaillons plus haut pr + de lisibilité
         onSubmit: handleSubmitForm, // la clé onSubmit attend une fonction responsable de la soumission du formulaire, que nous écrirons plus haut
         //! formik execute la fonction validate avant le onSubmit, donc on fait la gestion des erreurs dans validate
-        validate
-    })
+        // validate
+        //! dire à formik d'utiliser la validation de Yup (validationSchema) et non plus son validate
+        validationSchema
+    });
 
-    console.log("formik: ", formik); // remarquons la propriété 'touched' pr savoir le form a été touché ou pas
-    console.log("formik.touched: ", formik.touched);
+    // console.log("formik: ", formik); // remarquons la propriété 'touched' pr savoir le form a été touché ou pas
+    // console.log("formik.touched: ", formik.touched);
     // console.log("formValues: ", formik.values);
     // console.log("formik.errors: ", formik.errors);
 
-    // créer un schéma (=objet) qui va contenir la validation que l'on souhaite obtenir à chaque champ
+    //! créer un schéma (=objet) qui va contenir la validation que l'on souhaite obtenir à chaque champ
 
-    // const formValidate = Yup.object({
-    //     name: Yup.string()
-    //         .min(3, 'must be 3+ characters')
-    //         .max(20, 'must be 20 characters or less')
-    //         .required('required)'),
-    //     email: Yup.string()
-    //         .email('Email is invalid')
-    //         .required('required)'),
-    //     // giturl: Yup.string()
-    //     //     .url('URL is invalid')
-    //     //     .required('required)'),
-    // })
+
 
     // const logIn = formValidate.validate(fetchUser());
 

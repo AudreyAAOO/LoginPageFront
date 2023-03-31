@@ -1,3 +1,4 @@
+import React from 'react';
 import "../assets/css/modal.css";
 
 const Modal2 = ({ setVisible2 }) => {

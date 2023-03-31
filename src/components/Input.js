@@ -1,3 +1,4 @@
+import React from 'react';
 import "../assets/css/form.css";
 
 const Input = ({ name, state, setState, email, password }) => {
